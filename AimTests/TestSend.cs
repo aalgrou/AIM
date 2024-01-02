@@ -29,8 +29,9 @@ namespace Tests
 
     //Call back function
     private void compEvent(object sender, AsyncCompletedEventArgs e)
-    {       
-       Assert.IsEmpty(e.Error.Message);
+    {
+        Assert.That(e.Error.Message, Is.Empty);
+            
     }
         [SetUp]
         public void Setup()
