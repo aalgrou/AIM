@@ -6,33 +6,33 @@ namespace Tests
 {
     public class Tests
     {
-         string mail = "you@gmail.com";
+        string mail = "you@gmail.com";
         string host = "smtp.gmail.com";
         string user = "yourUserName";
         string pass = "yourPassword";        
         MimeMailMessage mymessage;
         MimeMailer mailer;
-         private void SendEmail()
-    {
-       
-        
-            //Create message
-            mymessage = new MimeMailMessage();
-            mymessage.From = new MimeMailAddress(mail);
-            mymessage.To.Add(mail);
-            mymessage.Subject = "test";
-                mymessage.Body = "body";        
-            //Set a delegate function for call back
-            mailer.SendCompleted += compEvent;
-            mailer.SendMailAsync(mymessage);
-    }
-
-    //Call back function
-    private void compEvent(object sender, AsyncCompletedEventArgs e)
-    {
-        Assert.That(e.Error.Message, Is.Empty);
+        private void SendEmail()
+        {
+           
             
-    }
+                //Create message
+                mymessage = new MimeMailMessage();
+                mymessage.From = new MimeMailAddress(mail);
+                mymessage.To.Add(mail);
+                mymessage.Subject = "test";
+                    mymessage.Body = "body";        
+                //Set a delegate function for call back
+                mailer.SendCompleted += compEvent;
+                mailer.SendMailAsync(mymessage);
+        }
+
+        //Call back function
+        private void compEvent(object sender, AsyncCompletedEventArgs e)
+        {
+            Assert.That(e.Error.Message, Is.Empty);
+                
+        }
         [SetUp]
         public void Setup()
         {
